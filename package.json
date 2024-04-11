@@ -1,0 +1,22 @@
+{
+  "name": "hillel-qa-cypress",
+  "version": "1.0.0",
+  "description": "cypress_course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "hillel-qa-cypress"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "bkorobkin",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.7.2",
+    "mochawesome": "^7.1.3"
+  }
+}
