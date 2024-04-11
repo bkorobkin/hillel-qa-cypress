@@ -68,7 +68,7 @@ describe('New-user registration. Сompilation SignUp form and data validation af
         cy.get('button').contains('Register').should('be.enabled').click();
         // 5. Переконатись, що реєстрація пройшла успішно і відкрилась сторінка "Гараж".
         cy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');
-        cy.wait(2000);
+        cy.contains('.alert.alert-success', 'Registration complete').should('be.visible');
         // 6. Перевірити, що дані на сторінці Profile відповідають даним, введеним під час реєстрації.
         cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile'); 
         cy.get('.profile_name.display-4').should('contain', registrationData.name);
