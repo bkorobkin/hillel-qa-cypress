@@ -12,3 +12,4 @@ cypress/support
 cypress/fixtures
 cypress.config.js
 cypress/e2e/3-hillel-qa-auto-tests/lesson10_info.js
+cypress.json
