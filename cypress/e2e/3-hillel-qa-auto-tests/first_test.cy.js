@@ -81,4 +81,4 @@ describe('New-user registration. Сompilation SignUp form and data validation af
         
     });
 });
-// pull request ^_^
+//pull request ^_^
