@@ -16,8 +16,8 @@
 // Дані користувача на сторінці "Гараж" відповідають даним, введеним під час реєстрації.
 
 
-const names = ['Alexander', 'Sophia', 'Luca', 'Max', 'Mateo', 'Sofia', 'Leo', 'Emma', 'Marco', 'Giulia'];
-const lastNames = ['Rossi', 'Muller', 'García', 'Smith', 'Petrov', 'Johnson', 'Sirko', 'Schmidt', 'Ivanov', 'Andersen'];
+const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'Oliver', 'Ava', 'Elijah', 'Charlotte', 'William', 'Sophia', 'James', 'Amelia', 'Benjamin', 'Isabella', 'Lucas', 'Mia', 'Henry', 'Evelyn', 'Alexander', 'Harper'];
+const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
 function generateRandomData() {
     const randomIndexName = Math.floor(Math.random() * names.length);
@@ -29,8 +29,10 @@ function generateRandomData() {
     const password = generateRandomPassword(); 
 
     function generateRandomPassword() {
+        const minLength = 8;
+        const maxLength = 15;
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const passwordLength = 8;
+        const passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
         let password = '';
         for (let i = 0; i < passwordLength; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
@@ -39,14 +41,12 @@ function generateRandomData() {
         return password;
     }
 
-    const reEnterPassword = password;
-
     return {
         name,
         lastName,
         email,
         password,
-        reEnterPassword
+        
     };
 }
 
@@ -59,17 +59,23 @@ describe('New-user registration. Сompilation SignUp form and data validation af
         cy.get('button').contains('Sign up').click();
         // 3. Заповнити форму реєстрації валідними даними.
         const registrationData = generateRandomData();
-        cy.get('input#signupName').should('exist').type(generateRandomData().name);
-        cy.get('input#signupLastName').should('exist').type(generateRandomData().lastName);
-        cy.get('input#signupEmail').should('exist').type(generateRandomData().email);
-        cy.get('input#signupPassword').should('exist').type(generateRandomData().password);
-        cy.get('input#signupRepeatPassword').should('exist').type(generateRandomData().reEnterPassword);
+        // cy.get('input#signupName').should('exist').type(generateRandomData().name);
+        // cy.get('input#signupLastName').should('exist').type(generateRandomData().lastName);
+        // cy.get('input#signupEmail').should('exist').type(generateRandomData().email);
+        // cy.get('input#signupPassword').should('exist').type(generateRandomData().password);
+        // cy.get('input#signupRepeatPassword').should('exist').type(generateRandomData().password);
+        cy.get('input#signupName').should('exist').type(registrationData.name);
+        cy.get('input#signupLastName').should('exist').type(registrationData.lastName);
+        cy.get('input#signupEmail').should('exist').type(registrationData.email);
+        cy.get('input#signupPassword').should('exist').type(registrationData.password);
+        cy.get('input#signupRepeatPassword').should('exist').type(registrationData.password);
         // 4. Натиснути кнопку "Registration".
-        cy.get('button').contains('Register').click();
+        cy.get('button').contains('Register').should('be.enabled').click();
         // 5. Переконатись, що реєстрація пройшла успішно і відкрилась сторінка "Гараж".
-        cy.url().should('include', 'https://guest:welcome2qauto@qauto2.forstudy.space/panel/garage');
+        cy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');
+        cy.wait(2000);
         // 6. Перевірити, що дані на сторінці Profile відповідають даним, введеним під час реєстрації.
-        cy.get('button').contains('Profile').click();
+        cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile'); 
         cy.get('.profile_name.display-4').should('contain', registrationData.name);
         cy.get('.profile_name.display-4').should('contain', registrationData.lastName);
         
