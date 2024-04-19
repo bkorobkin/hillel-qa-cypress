@@ -13,3 +13,9 @@ cypress/fixtures
 //cypress.config.js
 cypress/e2e/3-hillel-qa-auto-tests/lesson10_info.js
 cypress.json
+
+garageAddCar_test.cy.js
+fuelExpenses_test1.cy.js
+fuelExpenses_test2.cy.js
+loginPage.js
+homePage.js
