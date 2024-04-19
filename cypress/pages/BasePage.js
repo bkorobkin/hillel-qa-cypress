@@ -1,10 +1,5 @@
 // //BasePage contains header & footer selectors (logged user only)
  import 'cypress-xpath';
- export class BasePage {}
-
-
-
-
 
  //header's panel elements
     //logo
@@ -34,13 +29,10 @@
     cy.xpath(`//button[@class='btn btn-primary'][text()='Add car']`).should('be.enabled').click();
     //Add car select form
     cy.xpath(`//select[@id="addCarBrand"]`).should('be.enabled').click();
-        // random select carBrand
         selectRandomBrand();
         cy.xpath(`//select[@id="addCarBrand"]`).should('be.enabled').click();
-        // random select carModel
         selectRandomModel();
         cy.xpath(`//select[@id="addCarModel"]`).should('be.enabled').click();
-        // random input carMileage
         inputRandomNumber();
         cy.xpath(`//input[@id="addCarMileage"]`).should('be.enabled').click();
     //Add car form - Add button
@@ -61,6 +53,4 @@
     //Fuel expense added - success check
     cy.contains('.alert.alert-success', 'Fuel expense added').should('be.visible');
 
-//
 
-//export basePage = new BasePage();
