@@ -1,5 +1,5 @@
 import 'cypress-xpath';
-import { signInWithStaticData, getStaticAccountData } from './utilities';
+import { signInWithStaticData, getStaticAccountData } from '../../support/utilities';
 
 
 // describe('Fuel expenses tests', () => {

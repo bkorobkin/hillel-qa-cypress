@@ -46,7 +46,7 @@ const fillSignUpForm = (registrationData) => {
 
 // Checking Registration Success
 const checkRegistrationSuccess = () => {
-    cy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');
+    cy.url().should('include', 'https://guest:welcome2qauto@qauto2.forstudy.space/panel/garage');
     cy.contains('.alert.alert-success', 'Registration complete').should('be.visible');
 }
 
@@ -56,11 +56,6 @@ const checkProfileData = (registrationData) => {
     cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.name);
     cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.lastName);
 }
-
-
-
-
-
 
 // Sign in with static data 
 function getStaticAccountData() {
@@ -85,9 +80,9 @@ function signInWithStaticData() {
 cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 }
 
-
 // Add car form - brand randomizer
 function selectRandomBrand() {
+    cy.xpath(`//select[@id="addCarBrand"]`).should('be.enabled').click();
     const brands = ['Audi', 'BMW', 'Ford', 'Porsche', 'Fiat'];
     const randomBrandIndex = Math.floor(Math.random() * brands.length);
     const selectedBrand = brands[randomBrandIndex];
@@ -96,6 +91,7 @@ function selectRandomBrand() {
 }
 // Add car form - model randomizer
 function selectRandomModel(brand) {
+    cy.xpath(`//select[@id="addCarModel"]`).should('be.enabled').click();
     let models;
     switch (brand) {
         case 'Audi':
@@ -122,13 +118,11 @@ function selectRandomModel(brand) {
     cy.get('#addCarModel').select(selectedModel);
 }
  // Add car form - Mileage randomizer
- function inputRandomNumber() {
+ function inputRandomMileage() {
+    cy.xpath(`//input[@id="addCarMileage"]`).should('be.enabled').click();
     const randomNumber = Math.floor(Math.random() * (1000001));
     cy.xpath(`//input[@id="addCarMileage"]`).should('be.enabled').type(randomNumber);
 }
-
-//Add an expense form 
-//
 
 module.exports = {
     generateRandomData,
@@ -139,7 +133,7 @@ module.exports = {
     getStaticAccountData,
     selectRandomBrand,
     selectRandomModel,
-    inputRandomNumber,
+    inputRandomMileage,
     signInWithStaticData
 };
 
