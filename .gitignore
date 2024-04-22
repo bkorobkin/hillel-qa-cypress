@@ -4,12 +4,12 @@ node_modules
 cypress/videos/
 cypress/screenshots/
 .vscode/
-cypress/downloads
 
 cypress/e2e/1-getting-started
 cypress/e2e/2-advanced-examples
-cypress/support
-cypress/fixtures
+
+
 //cypress.config.js
 cypress/e2e/3-hillel-qa-auto-tests/lesson10_info.js
 cypress.json
+
