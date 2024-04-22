@@ -1,6 +1,8 @@
 //BasePage contains elements for not logged user only
 import 'cypress-xpath';
+import { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } from '../support/utilities';
 export class HomePage{
+
 
  //header's panel elements
    //logo
