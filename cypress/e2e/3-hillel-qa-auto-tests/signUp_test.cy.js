@@ -2,7 +2,7 @@
 //Sign Up test based on POM
 import 'cypress-xpath';
 import { BasePage } from '../../pages/BasePage';
-import { HomePage } from '../../pages/homePage';
+import { HomePage } from '../../pages/HomePage';
 
 const basePage = new BasePage();
 const homePage = new HomePage();

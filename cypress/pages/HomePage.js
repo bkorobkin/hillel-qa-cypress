@@ -1,7 +1,7 @@
 //BasePage contains elements for not logged user only
 import 'cypress-xpath';
 const { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } = require('../../support/utilities');
-export class HomePage{
+export default class HomePage{
 
 
  //header's panel elements
@@ -46,7 +46,5 @@ confirmSignUpForm() {
    logoFooter() {
     return cy.xpath(`//a[@class='footer_logo']/*[name()='svg'][@width='42' and @height='80']`).click();
  }
-
-
 
 }
