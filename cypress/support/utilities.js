@@ -130,7 +130,6 @@ module.exports = {
     checkRegistrationSuccess,
     checkProfileData,
     getStaticAccountData,
-    getStaticAccountData,
     selectRandomBrand,
     selectRandomModel,
     inputRandomMileage,

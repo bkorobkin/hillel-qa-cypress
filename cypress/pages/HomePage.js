@@ -1,6 +1,6 @@
 //BasePage contains elements for not logged user only
 import 'cypress-xpath';
-import { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } from '../support/utilities';
+const { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } = require('../../support/utilities');
 export class HomePage{
 
 
