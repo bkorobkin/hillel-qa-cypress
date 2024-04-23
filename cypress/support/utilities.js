@@ -4,7 +4,7 @@
 const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'Oliver', 'Ava', 'Elijah', 'Charlotte', 'William', 'Sophia', 'James', 'Amelia', 'Benjamin', 'Isabella', 'Lucas', 'Mia', 'Henry', 'Evelyn', 'Alexander', 'Harper'];
 const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
-function generateRandomData() {
+export function generateRandomData() {
     const randomIndexName = Math.floor(Math.random() * names.length);
     const randomIndexLastName = Math.floor(Math.random() * lastNames.length);
 
@@ -36,7 +36,7 @@ function generateRandomData() {
 };
 
 // Filling SignUpForm
-const fillSignUpForm = (registrationData) => {
+export const fillSignUpForm = (registrationData) => {
     cy.xpath(`//input[@id="signupName"]`).should('exist').type(registrationData.name);
     cy.xpath(`//input[@id="signupLastName"]`).should('exist').type(registrationData.lastName);
     cy.xpath(`//input[@id="signupEmail"]`).should('exist').type(registrationData.email);
@@ -45,20 +45,27 @@ const fillSignUpForm = (registrationData) => {
 }
 
 // Checking Registration Success
-const checkRegistrationSuccess = () => {
-    cy.url().should('include', 'https://guest:welcome2qauto@qauto2.forstudy.space/panel/garage');
+export const checkRegistrationSuccess = () => {
+    cy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');
     cy.contains('.alert.alert-success', 'Registration complete').should('be.visible');
 }
 
 // Checking Profile Data
-const checkProfileData = (registrationData) => {
-    cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile'); 
-    cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.name);
-    cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.lastName);
-}
+
+export const checkProfileData = (userData) => {
+    cy.visit(`https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile`); 
+    
+    cy.xpath(`//p[contains(@class, "profile_name display-4")]`).should('contain', userData.name);
+    
+    cy.xpath(`//p[contains(@class, "profile_name display-4")]`).should('contain', userData.lastName);
+    
+    cy.xpath(`//p[contains(@class, "profile_email display-4")]`).should('contain', userData.email);
+};
+
+
 
 // Sign in with static data 
-function getStaticAccountData() {
+export function getStaticAccountData() {
     return {
         staticName: "Test",
         staticLastName: "UserAAA",
@@ -66,7 +73,7 @@ function getStaticAccountData() {
         staticPassword: "TestUser1!",
     };
 }
-function signInWithStaticData() {
+export function signInWithStaticData() {
     const staticAccountData = getStaticAccountData();
     cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/');
 //Sign In click
@@ -81,7 +88,7 @@ cy.contains('.alert.alert-success', 'You have been successfully logged in').shou
 }
 
 // Add car form - brand randomizer
-function selectRandomBrand() {
+export function selectRandomBrand() {
     cy.xpath(`//select[@id="addCarBrand"]`).should('be.enabled').click();
     const brands = ['Audi', 'BMW', 'Ford', 'Porsche', 'Fiat'];
     const randomBrandIndex = Math.floor(Math.random() * brands.length);
@@ -90,7 +97,7 @@ function selectRandomBrand() {
     cy.get('#addCarBrand').select(selectedBrand);
 }
 // Add car form - model randomizer
-function selectRandomModel(brand) {
+export function selectRandomModel(brand) {
     cy.xpath(`//select[@id="addCarModel"]`).should('be.enabled').click();
     let models;
     switch (brand) {
@@ -118,22 +125,22 @@ function selectRandomModel(brand) {
     cy.get('#addCarModel').select(selectedModel);
 }
  // Add car form - Mileage randomizer
- function inputRandomMileage() {
+export function inputRandomMileage() {
     cy.xpath(`//input[@id="addCarMileage"]`).should('be.enabled').click();
     const randomNumber = Math.floor(Math.random() * (1000001));
     cy.xpath(`//input[@id="addCarMileage"]`).should('be.enabled').type(randomNumber);
 }
 
-module.exports = {
-    generateRandomData,
-    fillSignUpForm,
-    checkRegistrationSuccess,
-    checkProfileData,
-    getStaticAccountData,
-    selectRandomBrand,
-    selectRandomModel,
-    inputRandomMileage,
-    signInWithStaticData
-};
+// module.exports = {
+//     generateRandomData,
+//     fillSignUpForm,
+//     checkRegistrationSuccess,
+//     checkProfileData,
+//     getStaticAccountData,
+//     selectRandomBrand,
+//     selectRandomModel,
+//     inputRandomMileage,
+//     signInWithStaticData
+// };
 
 

@@ -1,6 +1,9 @@
 //BasePage contains elements for logged user only
 import 'cypress-xpath';
-export class BasePage {
+import { checkRegistrationSuccess } from '../support/utilities.js';
+import { checkProfileData } from '../support/utilities.js';
+import { generateRandomData } from '../support/utilities.js';
+export default class BasePage {
 
 
  //header's panel elements
@@ -109,7 +112,9 @@ export class BasePage {
       return checkRegistrationSuccess();
    }
    profileDataCheck() {
-      return checkProfileData(registrationData);
-   }
+      const userData = generateRandomData();
+      return checkProfileData(userData);
+  }
+   
 
 }

@@ -1,6 +1,6 @@
 // /// <reference types="cypress" />
 import 'cypress-xpath';
-const { generateRandomData } = require('../../support/utilities');
+import { generateRandomData } from '../../support/utilities';
 
 // //describition hw9 test logic
 // // Тест-кейс: Реєстрація нового користувач для сервісу "Гараж"
@@ -31,8 +31,8 @@ describe('New-user registration. Сompilation SignUp form and data validation af
         cy.contains('.alert.alert-success', 'Registration complete').should('be.visible');
         // 6. Перевірити, що дані на сторінці Profile відповідають даним, введеним під час реєстрації.
         cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile'); 
-        cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.name);
-        cy.xpath(`//app-profile/div/div[2]/div/p`).should('contain', registrationData.lastName);
+        cy.xpath(`//p[@class="profile_name display-4"]`).should('contain', registrationData.name);
+        cy.xpath(`//p[@class="profile_name display-4"]`).should('contain', registrationData.lastName);
         
     });
 });
