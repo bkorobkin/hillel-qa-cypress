@@ -1,6 +1,6 @@
 //BasePage contains elements for logged user only
 import 'cypress-xpath';
-import { checkRegistrationSuccess } from '../support/utilities.js';
+import { checkLoggedIn, checkRegistrationSuccess } from '../support/utilities.js';
 import { checkProfileData } from '../support/utilities.js';
 import { generateRandomData } from '../support/utilities.js';
 export default class BasePage {
@@ -49,13 +49,8 @@ export default class BasePage {
       return cy.xpath(`//a[contains(@class, 'user-nav_link') and contains(text(), 'Logout')]`).click();
    }
  
- //Footer's elements
-   //footer logo
-   logoFooter() {
-      return cy.xpath(`//a[@class='footer_logo']/*[name()='svg'][@width='42' and @height='80']`).click();
-   }
 
-// Garage part
+///./panel/garage
    //Add car button
    addCarButtonGaragePage() {
       return cy.xpath(`//button[@class='btn btn-primary'][text()='Add car']`).should('be.enabled').click();
@@ -80,8 +75,7 @@ export default class BasePage {
       return cy.contains('.alert.alert-success', 'Car added').should('be.visible');
    }
     
-
- //Fuel expenses part
+ ///.panel/expenses
     // Add an expense from
    selectExistVehicle() {
       return cy.selectRandomVehicle();
@@ -105,9 +99,44 @@ export default class BasePage {
       return cy.contains('.alert.alert-success', 'Fuel expense added').should('be.visible');
    }
 
+///./panel/settings
+   //Currency
+
+   //Units of distance
+
+   //Change email
+
+   //Change password
+
+   //Remove account
+   removeAccountButton() {
+      cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/settings')
+      return cy.xpath(`//button[@class="btn btn-danger-bg"]`).should('exist').click();
+   }
+   confirmRemoveAccount() {
+      cy.xpath("//h4[contains(text(), 'Remove account')]").should('exist');
+      cy.xpath(`//button[@class='btn btn-danger']`).should('exist').click();
+   }
+   cancelRemoveAccountBybtn() {
+      cy.xpath("//h4[contains(text(), 'Remove account')]").should('exist');
+      cy.xpath(`//button[@class='btn btn-secondary']`).should('exist').click();
+   }
+   cancelRemoveAccountByX() {
+      cy.xpath("//h4[contains(text(), 'Remove account')]").should('exist');
+      cy.xpath(`//button[@class='close']`).should('exist').click();
+   }
+
+
+
+
+
+ //Footer's elements
+   //footer logo
+   logoFooter() {
+      return cy.xpath(`//a[@class='footer_logo']/*[name()='svg'][@width='42' and @height='80']`).should('exist').click();
+   }
 
 // Other (e.g.: alerts check, profile data check)
-   //Registration success check
    registrationSuccessCheck() {
       return checkRegistrationSuccess();
    }
@@ -115,6 +144,8 @@ export default class BasePage {
       const userData = generateRandomData();
       return checkProfileData(userData);
   }
-   
+   loggedInCheck() {
+      return checkLoggedIn();
+   }
 
 }

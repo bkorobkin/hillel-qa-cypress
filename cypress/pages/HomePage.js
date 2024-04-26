@@ -1,7 +1,8 @@
-//BasePage contains elements for not logged user only
+//HomePage contains elements for not logged user only
 import 'cypress-xpath';
 import { fillSignUpForm } from '../support/utilities.js';
 import { generateRandomData } from '../support/utilities.js';
+import { getStaticAccountData } from '../steps/GeneralStep.js';
 //import { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } from '../../support/utilities.js';
 
 
@@ -28,7 +29,7 @@ export default class HomePage{
     return cy.xpath(`//button[@class="header-link -guest"][text()='Guest log in']`)
    }
    signInHeader() {
-    return cy.xpath(`//button[@class="btn btn-outline-white header_signin"][text()='Sign In']`)
+    return cy.xpath(`//button[@class="btn btn-outline-white header_signin"][text()='Sign In']`).should('exist').click();
    }
 //Sign Up 
 signUpButton() {
@@ -41,6 +42,23 @@ fillingSignUpForm() {
 confirmSignUpForm() {
     return cy.xpath(`//button[@class='btn btn-primary'][text()='Register']`).should('be.enabled').click();
 }
+//Sign In
+signInButton() {
+   return cy.xpath(`//button[@class='btn btn-outline-white header_signin']`).should('exist').click(); 
+}
+fillingSignInForm() {
+   const registrationData = generateRandomData();
+   return fillSignInForm(registrationData);
+}
+fillingSignInFormStatic() {
+   const staticAccountData = getStaticAccountData();
+   cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail);
+   cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
+}
+confirmSignInForm() {
+   return cy.xpath(`//button[@class='btn btn-primary'][text()='Login']`).should('be.enabled').click();
+} 
+
 
 //Contacts
 //*[@id="contactsSection"]
