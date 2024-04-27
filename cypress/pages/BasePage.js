@@ -3,7 +3,7 @@ import 'cypress-xpath';
 import { checkLoggedIn, checkRegistrationSuccess } from '../support/utilities.js';
 import { checkProfileData } from '../support/utilities.js';
 import { generateRandomData } from '../support/utilities.js';
-export default class BasePage {
+export class BasePage {
 
 
  //header's panel elements
@@ -149,3 +149,4 @@ export default class BasePage {
    }
 
 }
+export const basePage = new BasePage();

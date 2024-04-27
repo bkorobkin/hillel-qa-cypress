@@ -2,11 +2,11 @@
 import 'cypress-xpath';
 import { fillSignUpForm } from '../support/utilities.js';
 import { generateRandomData } from '../support/utilities.js';
-import { getStaticAccountData } from '../steps/GeneralStep.js';
+//import { getStaticAccountData } from '../steps/GeneralStep.js';
 //import { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } from '../../support/utilities.js';
 
 
-export default class HomePage{
+export class HomePage {
 
 
  //header's panel elements
@@ -50,11 +50,11 @@ fillingSignInForm() {
    const registrationData = generateRandomData();
    return fillSignInForm(registrationData);
 }
-fillingSignInFormStatic() {
-   const staticAccountData = getStaticAccountData();
-   cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail);
-   cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
-}
+// fillingSignInFormStatic() {
+//    const staticAccountData = getStaticAccountData();
+//    cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail);
+//    cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
+// }
 confirmSignInForm() {
    return cy.xpath(`//button[@class='btn btn-primary'][text()='Login']`).should('be.enabled').click();
 } 
@@ -70,3 +70,4 @@ confirmSignInForm() {
  }
 
 }
+export const homePage = new HomePage();
