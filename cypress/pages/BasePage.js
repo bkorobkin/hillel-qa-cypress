@@ -110,7 +110,7 @@ export class BasePage {
    addFuelExpenseSuccessCheck() {
       return cy.contains('.alert.alert-success', 'Fuel expense added').should('be.visible');
    }
-
+   
 ///./panel/settings
    //Currency
 

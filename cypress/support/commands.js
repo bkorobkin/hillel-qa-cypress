@@ -97,3 +97,10 @@ Cypress.Commands.add('checkIfCarIsAdded', () => {
     });
   });
   
+  Cypress.Commands.add('registration', (login, password) => {
+    cy.get('.mb-5').click()
+    cy.url().should("contain", "registration")
+    cy.get('#inputLogin').type(login)
+    cy.get('#inputPassword').type(password)
+    cy.get('.w-100').click()
+});
