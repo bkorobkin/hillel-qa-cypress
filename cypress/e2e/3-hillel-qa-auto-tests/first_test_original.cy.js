@@ -1,6 +1,4 @@
 // /// <reference types="cypress" />
-
-
 //describition hw9 test logic
 // Тест-кейс: Реєстрація нового користувач для сервісу "Гараж"
 // Опис: Тест-кейс перевіряє процес реєстрації нового користувача, заповнення форми SignUp, 
@@ -16,7 +14,6 @@
 
 // Очікуваний результат:
 // Дані користувача на сторінці "Гараж" відповідають даним, введеним під час реєстрації.
-
 
 const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'Oliver', 'Ava', 'Elijah', 'Charlotte', 'William', 'Sophia', 'James', 'Amelia', 'Benjamin', 'Isabella', 'Lucas', 'Mia', 'Henry', 'Evelyn', 'Alexander', 'Harper'];
 const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];

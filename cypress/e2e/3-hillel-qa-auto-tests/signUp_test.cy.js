@@ -1,11 +1,8 @@
 // /// <reference types="cypress" />
 //Sign Up test based on POM
 import 'cypress-xpath';
-import { BasePage } from '../../pages/BasePage';
-import { HomePage } from '../../pages/homePage';
-
-const basePage = new BasePage();
-const homePage = new HomePage();
+import {basePage} from '../../pages/BasePage';
+import {homePage} from '../../pages/HomePage';
 
 describe('New-user registration. Сompilation SignUp form and data validation after registration.', () => {  
     
