@@ -1,11 +1,11 @@
 import 'cypress-xpath';
-// import { BasePage } from '../../pages/BasePage';
-// import { HomePage } from '../../pages/HomePage';
-import { GeneralStep } from '../step/GeneralStep.js';
+import { basePage } from '../../pages/BasePage';
+import { homePage } from '../../pages/HomePage';
+import { generalStep } from '../steps/GeneralStep.js';
 
 // const basePage = new BasePage();
 // const homePage = new HomePage();
-const generalStep = new GeneralStep();
+
 
 
 // Add car form - brand randomizer

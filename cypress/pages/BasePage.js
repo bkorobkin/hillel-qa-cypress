@@ -74,7 +74,19 @@ export class BasePage {
    addNewCarSuccessCheck() {
       return cy.contains('.alert.alert-success', 'Car added').should('be.visible');
    }
-    
+ ///delete car
+   editButton() {
+   return cy.xpath('//button[contains(@class, "car_edit") and contains(@class, "btn-edit")]').should('be.visible').click();
+   }
+   removeCarButton() {
+      return cy.xpath('//button[@type="button" and contains(@class, "btn-outline-danger")]').should('be.visible').click();
+   }
+   confirmRemoveButton() {
+      return cy.xpath('//button[@type="button" and contains(@class, "btn-danger") and text()="Remove"]').should('be.visible').click();
+   }
+   removedCarSuccessCheck() {
+      return cy.contains('.alert.alert-success', 'Car removed').should('be.visible');
+   }
  ///.panel/expenses
     // Add an expense from
    selectExistVehicle() {

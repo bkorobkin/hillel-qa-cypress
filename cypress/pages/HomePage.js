@@ -50,11 +50,11 @@ fillingSignInForm() {
    const registrationData = generateRandomData();
    return fillSignInForm(registrationData);
 }
-// fillingSignInFormStatic() {
-//    const staticAccountData = getStaticAccountData();
-//    cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail);
-//    cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
-// }
+fillingSignInFormStatic() {
+   const staticAccountData = getStaticAccountData();
+   return cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail),
+         cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
+}
 confirmSignInForm() {
    return cy.xpath(`//button[@class='btn btn-primary'][text()='Login']`).should('be.enabled').click();
 } 

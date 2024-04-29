@@ -66,3 +66,4 @@ export const checkLoggedIn = () => {
     cy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');
     cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 };
+
