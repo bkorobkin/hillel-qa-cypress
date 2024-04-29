@@ -97,10 +97,22 @@ Cypress.Commands.add('checkIfCarIsAdded', () => {
     });
   });
   
-  Cypress.Commands.add('registration', (login, password) => {
-    cy.get('.mb-5').click()
-    cy.url().should("contain", "registration")
-    cy.get('#inputLogin').type(login)
-    cy.get('#inputPassword').type(password)
-    cy.get('.w-100').click()
+// random email/pass
+  Cypress.Commands.add('generateRandomEmail', () => {
+    const randomString = Math.random().toString(36).substring(2);
+    return `user_${randomString}@example.com`;
+});
+
+Cypress.Commands.add('generateRandomPassword', () => {
+    return Math.random().toString(36).substring(2);
+});
+
+Cypress.Commands.add('createNewUser', () => {
+    const email = cy.generateRandomEmail();
+    const password = cy.generateRandomPassword();
+
+    const newUser = {
+        email: email,
+        password: password,   
+    }
 });
