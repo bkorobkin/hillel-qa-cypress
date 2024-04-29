@@ -1,7 +1,7 @@
 import 'cypress-xpath';
 import { basePage } from '../../pages/BasePage';
 import { homePage } from '../../pages/HomePage';
-import { generalStep } from '../steps/GeneralStep.js';
+import { generalStep } from '../steps/GeneralStep';
 
 // const basePage = new BasePage();
 // const homePage = new HomePage();
