@@ -67,19 +67,11 @@ export const checkLoggedIn = () => {
     cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 };
 
-// export const selectDateByDatePicker = () => {
-//     cy.get('.input-group-appenu > .btn > .icon').click();
-//     selectDateInDatePicker();
-// }
-function selectDateInDatePicker(targetDate) {
-
-    const formattedDate = targetDate.toLocaleDateString('en-US', {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    });
-
-    cy.get('.model-body').within(() => {
-        cy.get('.ngb-dp-day[aria-label="' + formattedDate + '"]')
-        .should('be.visible')
-        .click();
-    });
+//gneration random email
+export function generateRandomEmail() {
+    const randomString = Math.random().toString(36).substring(2);
+    return `user_${randomString}@example.com`;
 }
+
+const randomEmail = generateRandomEmail();
+const randomPassword = Math.random().toString(36).substring(2);
