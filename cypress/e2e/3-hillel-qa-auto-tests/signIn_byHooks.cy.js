@@ -3,17 +3,17 @@
 import 'cypress-xpath';
 import { basePage } from '../../pages/BasePage';
 import { homePage } from '../../pages/HomePage';
-import { createAccountWrap } from '../../steps/GeneralStep';
+import { staticAccountData } from '../../steps/GeneralStep';
 
 describe('Sign In as new registered user', () => {  
     before(() => {
-        createAccountWrap(userData);
+        loginStatic(staticAccountData);
     });
     
     it('Sign In ', () => {
         cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/');
         homePage.signInButton();
-        homePage.fillingSignInForm(userData);
+        homePage.fillingSignInForm(staticAccountData);
         homePage.confirmSignInForm();
         basePage.loggedInCheck();
     });

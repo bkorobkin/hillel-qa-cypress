@@ -100,7 +100,7 @@ Cypress.Commands.add('checkIfCarIsAdded', () => {
 // random email/pass
   Cypress.Commands.add('generateRandomEmail', () => {
     const randomString = Math.random().toString(36).substring(2);
-    return `user_${randomString}@example.com`;
+    return `test_${randomString}@gmail.com`;
 });
 
 Cypress.Commands.add('generateRandomPassword', () => {
