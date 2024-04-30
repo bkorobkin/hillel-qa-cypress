@@ -24,8 +24,8 @@ describe('New-user registration. Сompilation SignUp form and data validation af
     //     checkRegistrationSuccess('https://qauto2.forstudy.space/panel/garage');
         basePage.registrationSuccessCheck();
     //     // 6. Перевірити, що дані на сторінці Profile відповідають даним, введеним під час реєстрації.
-    //     checkProfileData(registrationData);
-        basePage.profileDataCheck();
+         const userData = generateRandomData();
+        basePage.profileDataCheck(userData);
     });
 
 });

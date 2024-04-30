@@ -54,10 +54,9 @@ export function getStaticAccountData() {
 export function signInWithStaticData() {
     const staticAccountData = getStaticAccountData();
     cy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/');
-    cy.xpath(`//button[@class='btn btn-outline-white header_signin']`).should('exist').click(); 
-    cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail);
-    cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
-    cy.xpath(`//button[@class='btn btn-primary']`).should('be.enabled').click();
+    homePage.signInButton();
+    homePage.fillingSignInFormStatic();
+    homePage.confirmSignInForm();
     cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 }
 

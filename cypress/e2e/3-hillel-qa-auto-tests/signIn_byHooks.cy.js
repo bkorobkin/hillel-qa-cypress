@@ -21,5 +21,5 @@ describe('Sign In as new registered user', () => {
     after(() => {
         basePage.removeAccountButton();
         basePage.confirmRemoveAccount();
-        });
+    });
 });

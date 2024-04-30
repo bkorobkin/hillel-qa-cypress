@@ -116,3 +116,7 @@ Cypress.Commands.add('createNewUser', () => {
         password: password,   
     }
 });
+
+Cypress.Commands.add('generateRandomNumber', (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+});

@@ -42,14 +42,14 @@ confirmSignUpForm() {
 //Sign In
 signInButton() {
    //return cy.xpath(`//button[@class='btn btn-outline-white header_signin']`).should('exist').click(); 
-   return cy.get('button.btn.btn-outline-white.header_signin');
+   return cy.get('button.btn.btn-outline-white.header_signin').should('exist').click(); ;
 }
 fillingSignInForm() {
-   const registrationData = generateRandomData();
+   //const registrationData = generateRandomData();
    return fillSignInForm(registrationData);
 }
 fillingSignInFormStatic() {
-   const staticAccountData = getStaticAccountData();
+   //const staticAccountData = getStaticAccountData();
    return cy.xpath(`//input[@id="signinEmail"]`).should('exist').type(staticAccountData.staticEmail),
          cy.xpath(`//input[@id="signinPassword"]`).should('exist').type(staticAccountData.staticPassword);
 }

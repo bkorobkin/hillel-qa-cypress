@@ -152,10 +152,10 @@ export class BasePage {
    registrationSuccessCheck() {
       return checkRegistrationSuccess();
    }
-   profileDataCheck() {
-      const userData = generateRandomData();
+   profileDataCheck(userData) {
       return checkProfileData(userData);
   }
+  
    loggedInCheck() {
       return checkLoggedIn();
    }

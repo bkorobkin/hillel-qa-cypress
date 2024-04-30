@@ -49,7 +49,9 @@ export default class GarageStep {
         }
     // Add car form - Mileage randomizer
     inputRandomMileage() {
-        const mileage = Math.floor(Math.random() * (1000001));
+        const min = 1000;
+        const max = 150000;
+        const mileage = cy.generateRandomNumber(min, max);
         return mileage;
     }
     
