@@ -2,9 +2,6 @@
 import 'cypress-xpath';
 import { fillSignUpForm } from '../support/utilities.js';
 import { generateRandomData } from '../support/utilities.js';
-//import { getStaticAccountData } from '../steps/GeneralStep.js';
-//import { generateRandomData, fillSignUpForm, checkRegistrationSuccess, checkProfileData } from '../../support/utilities.js';
-
 
 export class HomePage {
 

@@ -67,11 +67,13 @@ export const checkLoggedIn = () => {
     cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 };
 
-//gneration random email
-export function generateRandomEmail() {
-    const randomString = Math.random().toString(36).substring(2);
-    return `user_${randomString}@example.com`;
-}
-
-const randomEmail = generateRandomEmail();
-const randomPassword = Math.random().toString(36).substring(2);
+// //gneration random email/pass
+// export function generateRandomEmail() {
+//     const randomString = Math.random().toString(36).substring(2);
+//     return `${randomString}@gmail.com`;
+// }
+// export function StaticPassword() {
+//     return 'Qwerty12345'; 
+// }
+// const randomEmail = generateRandomEmail();
+// const randomPassword = Math.random().toString(36).substring(2);
