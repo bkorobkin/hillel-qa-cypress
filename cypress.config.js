@@ -4,15 +4,15 @@ module.exports = defineConfig({
   // viewportHeight: 900,
   // viewportHeight: 1300,
 
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-    baseUrl: `https://guest:welcome2qauto@qauto2.forstudy.space/`,
-    // env {
-    //   username: 'guest',
-    //   password: 'welcome2qauto'
-    // },
-     experimentalStudio: true
-  },
-});
+    "e2e": {
+      "setupNodeEvents": (on, config) => {
+        
+      },
+      "baseUrl": "https://qauto2.forstudy.space/",
+      "experimentalStudio": true,
+      "env": {
+        "username": process.env.USERNAME,
+        "password": process.env.PASSWORD
+      }
+    }
+  })
