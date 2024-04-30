@@ -1,6 +1,6 @@
 //HomePage contains elements for not logged user only
 import 'cypress-xpath';
-import { fillSignUpForm } from '../support/utilities.js';
+import { fillSignUpForm } from '../support/utilities';
 import { generateRandomData } from '../support/utilities.js';
 
 export class HomePage {

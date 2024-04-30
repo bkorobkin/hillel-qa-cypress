@@ -1,6 +1,6 @@
 import 'cypress-xpath';
-import { basePage } from '../../pages/BasePage';
-import { homePage } from '../../pages/HomePage';
+import { basePage } from '../pages/BasePage';
+import { homePage } from '../pages/HomePage';
 
 export default class GeneralStep {
     loginStatic(staticAccountData) {
