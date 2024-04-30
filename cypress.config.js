@@ -9,9 +9,10 @@ module.exports = defineConfig({
         
       },
       "baseUrl": "https://qauto2.forstudy.space/",
+      "isolation": false,
       "experimentalStudio": true,
       "env": {
-        "username": process.env.USERNAME,
+        "username": process.env.LOGIN,
         "password": process.env.PASSWORD
       }
     }

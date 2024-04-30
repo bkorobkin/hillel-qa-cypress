@@ -1,8 +1,10 @@
 //utilities
 
+import { homePage } from "../pages/HomePage";
+
 //Sing up form data generator
-const names = ['Liam', 'Olivia', 'Noah', 'Emma', 'Oliver', 'Ava', 'Elijah', 'Charlotte', 'William', 'Sophia', 'James', 'Amelia', 'Benjamin', 'Isabella', 'Lucas', 'Mia', 'Henry', 'Evelyn', 'Alexander', 'Harper'];
-const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
+const names = ['Ethan', 'Sophie', 'Mason', 'Isabelle', 'Jacob', 'Emily', 'Daniel', 'Chloe', 'Alexander', 'Lily', 'Michael', 'Grace', 'Matthew', 'Zoe', 'David', 'Sophia', 'Joseph', 'Charlotte', 'Andrew', 'Mia'];
+const lastNames = ['Walker', 'White', 'Harris', 'Clark', 'Lewis', 'Young', 'Green', 'Hall', 'Scott', 'King', 'Allen', 'Baker', 'Adams', 'Nelson', 'Carter', 'Parker', 'Morris', 'Rivera', 'Cook', 'Collins'];
 
 export function generateRandomData() {
     const randomIndexName = Math.floor(Math.random() * names.length);
@@ -77,3 +79,28 @@ export const checkLoggedIn = () => {
 // }
 // const randomEmail = generateRandomEmail();
 // const randomPassword = Math.random().toString(36).substring(2);
+
+export function createUserAndCheckStatus(userData) {
+    cy.request({
+        method: 'POST',
+        url: '/api/auth/signup',
+        auth: {
+            username: Cypress.env('username'),
+            password: Cypress.env('password')
+        },
+        body: {
+            name: userData.name,
+            lastName: userData.lastName,
+            email: userData.email,
+            password: userData.password,
+            repeatPassword: userData.password
+        }
+    }).then(response => {
+        expect(response.status).to.eq(201);
+    });
+}
+export function loginUI(email, password) {
+    homePage.signInButton();
+    homePage.fillingSignInFormAPI(email, password);
+    homePage.confirmSignInForm(); 
+}

@@ -4,7 +4,11 @@ import { homePage } from '../pages/HomePage';
 import { generalStep } from '../steps/GeneralStep';
 
 export default class GarageStep {
-
+    constructor() {
+        this.selectedBrand = null;
+        this.selectedModel = null;
+        this.selectedMileage = null;
+    }
     // Add car form - brand randomizer
     selectRandomBrand() {
         cy.xpath(`//select[@id='addCarBrand']`).should('be.enabled').click();
@@ -43,12 +47,21 @@ export default class GarageStep {
             const selectedModel = models[randomModelIndex];
             return selectedModel;
         }
-    
     // Add car form - Mileage randomizer
-        inputRandomMileage() {
-            const randomNumber = Math.floor(Math.random() * (1000001));
-            return randomNumber;
+    inputRandomMileage() {
+        const mileage = Math.floor(Math.random() * (1000001));
+        return mileage;
+    }
+    
+        addRandomCar() {
+                let selectedBrand = this.selectRandomBrand();
+                let selectedModel = this.selectRandomModel(selectedBrand); 
+                const selectedMileage = this.inputRandomMileage(); 
+    
+            basePage.addNewCarConfim();  
         }
     }
+    
+    
     
 export const garageStep = new GarageStep();

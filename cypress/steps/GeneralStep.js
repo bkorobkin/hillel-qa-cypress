@@ -7,7 +7,10 @@ export default class GeneralStep {
         homePage.signInWithStaticData().should('exist').type(staticAccountData.staticEmail);
         homePage.signInWithStaticData().should('exist').type(staticAccountData.staticPassword);
     }
-
+    // loginGenerated() {
+    //     homePage.signInWithStaticData().should('exist').type(staticAccountData.staticEmail);
+    //     homePage.signInWithStaticData().should('exist').type(staticAccountData.staticPassword);
+    // }
     // //create account (saved userData)
     // createAccountWrap() {
     //     cy.wrap(generateRandomData()).as('userData');
@@ -68,6 +71,7 @@ export function signInWithGeneratedData() {
     cy.contains('.alert.alert-success', 'You have been successfully logged in').should('be.visible');
 }
 
+
 export function addNewCar() {
     basePage.addCarButtonGaragePage(); 
     basePage.addNewCarButton(); 
@@ -76,7 +80,7 @@ export function addNewCar() {
     basePage.inputNewMileage(); 
     basePage.addNewCarConfim(); 
 
-    //basePage.addNewCarSuccessCheck();
+    basePage.addNewCarSuccessCheck();
 }
 
 export function deleteCar() {
@@ -86,4 +90,4 @@ export function deleteCar() {
 }
 
 export const generalStep = new GeneralStep();
-export const userData = generateRandomData();
+//export const userData = generateRandomData();
