@@ -44,7 +44,7 @@ signInButton() {
    //return cy.xpath(`//button[@class='btn btn-outline-white header_signin']`).should('exist').click(); 
    return cy.get('button.btn.btn-outline-white.header_signin').should('exist').click(); ;
 }
-fillingSignInForm() {
+fillingSignInForm(registrationData) {
    //const registrationData = generateRandomData();
    return fillSignInForm(registrationData);
 }
