@@ -120,3 +120,23 @@ Cypress.Commands.add('createNewUser', () => {
 Cypress.Commands.add('generateRandomNumber', (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 });
+
+Cypress.Commands.add('createExpenseAPI', (carId, amount, description) => {
+  console.log('Creating expense with parameters:', carId, amount, description);
+  cy.request({
+      method: 'POST',
+      url: '/api/expenses',
+      body: {
+          carId: carId,
+          amount: amount,
+          description: description
+      },
+      failOnStatusCode: false 
+  }).then(response => {
+      console.log('Expense creation response:', response);
+      expect(response.status).to.equal(201);
+      expect(response.body).to.have.property('status', 'ok');
+      expect(response.body.data).to.exist;
+  });
+});
+

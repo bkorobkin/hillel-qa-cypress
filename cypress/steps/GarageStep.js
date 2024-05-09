@@ -55,15 +55,82 @@ export default class GarageStep {
         return mileage;
     }
     
-        addRandomCar() {
-                let selectedBrand = this.selectRandomBrand();
-                let selectedModel = this.selectRandomModel(selectedBrand); 
-                const selectedMileage = this.inputRandomMileage(); 
+    addRandomCar() {
+
+        const selectedBrand = this.selectRandomBrand();
+        const selectedModel = this.selectRandomModel(selectedBrand);
+        let selectedMileage = this.inputRandomMileage();
     
-            basePage.addNewCarConfim();  
+        basePage.addNewCarConfim();
+        cy.intercept('POST', '/api/cars').as('createCar');
+
+        cy.wait('@createCar').then(interception => {
+        expect(interception.response.statusCode).to.eq(200);
+            
+        const createdCar = interception.response.body.data;
+
+        expect(createdCar.id).to.exist;
+        expect(createdCar.carBrandId).to.equal(selectedBrand);
+        expect(createdCar.carModelId).to.equal(selectedModel);
+        expect(createdCar.mileage).to.equal(selectedMileage);
+});
+    }
+    
+    addRandomCarAPI() {
+        const brands = ['Audi', 'BMW', 'Ford', 'Porsche', 'Fiat'];
+        const models = [
+            ['TT', 'R8', 'Q7', 'A6', 'A8'],
+            ['3', '5', 'X5', 'X6', 'Z3'],
+            ['Fiesta', 'Focus', 'Fusion', 'Mondeo', 'Sierra'],
+            ['911', 'Cayenne', 'Panamera'],
+            ['Palio', 'Ducato', 'Panda', 'Punto', 'Scudo']
+        ];
+    
+        const selectedBrandIndex = Cypress._.random(0, brands.length - 1);
+        const selectedBrand = brands[selectedBrandIndex];
+    
+        let selectedModelIndex;
+        switch (selectedBrand) {
+            case 'Audi':
+                selectedModelIndex = Cypress._.random(1, 5); 
+                break;
+            case 'BMW':
+                selectedModelIndex = Cypress._.random(6, 10); 
+                break;
+            case 'Ford':
+                selectedModelIndex = Cypress._.random(11, 15); 
+                break;
+            case 'Porsche':
+                selectedModelIndex = Cypress._.random(16, 18); 
+                break;
+            case 'Fiat':
+                selectedModelIndex = Cypress._.random(19, 23); 
+                break;
+            default:
+                throw new Error('Invalid brand');
         }
+    
+        const selectedBrandId = selectedBrandIndex + 1;
+        const selectedMileage = Cypress._.random(1000, 150000);
+    
+        cy.request({
+            method: 'POST',
+            url: '/api/cars',
+            body: {
+                carBrandId: selectedBrandId,
+                carModelId: selectedModelIndex,
+                mileage: selectedMileage
+            }
+        }).then(response => {
+            expect(response.status).to.eq(201);
+            expect(response.body.status).to.eq('ok');
+            expect(response.body.data.id).to.exist;
+            this.createdCarId = response.body.data.id;
+        });
     }
     
     
+    
+    }
     
 export const garageStep = new GarageStep();
