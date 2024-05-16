@@ -1,7 +1,7 @@
 //Garage - delete car test
 import 'cypress-xpath';
-import {generalStep} from '../../steps/GeneralStep';
-import {basePage} from '../../pages/BasePage';
+import {generalStep} from '../steps/GeneralStep';
+import {basePage} from '../pages/BasePage';
 
 describe('Garage - delete car test', () => {  
     before(() => {

@@ -1,5 +1,5 @@
 import 'cypress-xpath';
-import { garageStep } from '../../steps/GarageStep';
+import { garageStep } from '../steps/GarageStep';
 import { generateRandomData, createUserAndCheckStatus } from '../../support/utilities';
 import { basePage } from '../../pages/BasePage';
 

@@ -9,16 +9,17 @@ module.exports = defineConfig({
       "setupNodeEvents": (on, config) => {
         
       },
-      "baseUrl": "https://guest:welcome2qauto@qauto2.forstudy.space",
-      "isolation": false,
-      "experimentalStudio": true,
+      baseUrl: "https://guest:welcome2qauto@qauto2.forstudy.space",
       // "env": {
       //   "username": process.env.LOGIN,
       //   "password": process.env.PASSWORD
       // }
       env: {
-        "username": 'guest',
-        "password": 'welcome2qauto'
-      }
+        prodLink: "https://guest:welcome2qauto@qauto.forstudy.space",
+        username: 'guest',
+        password: 'welcome2qauto'
+      },
+      isolation: false,
+      experimentalStudio: true,
     }
   })

@@ -1,7 +1,7 @@
 import 'cypress-xpath';
-import { basePage } from '../pages/BasePage';
-import { homePage } from '../pages/HomePage';
-import { generalStep } from '../steps/GeneralStep';
+import { basePage } from '../../pages/BasePage';
+import { homePage } from '../../pages/HomePage';
+import { generalStep } from './GeneralStep';
 
 export default class GarageStep {
     constructor() {
