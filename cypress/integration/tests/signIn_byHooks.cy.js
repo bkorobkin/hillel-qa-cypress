@@ -1,9 +1,9 @@
 // /// <reference types="cypress" />
 //Sign Up test based on POM
 import 'cypress-xpath';
-import { basePage } from '../../pages/BasePage';
-import { homePage } from '../../pages/HomePage';
-import { staticAccountData } from '../../steps/GeneralStep';
+import { basePage } from '../pages/BasePage';
+import { homePage } from '../pages/HomePage';
+import { staticAccountData } from '../steps/GeneralStep';
 
 describe('Sign In as new registered user', () => {  
     before(() => {

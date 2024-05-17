@@ -81,24 +81,27 @@ export const checkLoggedIn = () => {
 // const randomPassword = Math.random().toString(36).substring(2);
 
 export function createUserAndCheckStatus(userData) {
-    cy.request({
-        method: 'POST',
-        url: '/api/auth/signup',
-        auth: {
-            username: Cypress.env('username'),
-            password: Cypress.env('password')
-        },
-        body: {
-            name: userData.name,
-            lastName: userData.lastName,
-            email: userData.email,
-            password: userData.password,
-            repeatPassword: userData.password
-        }
-    }).then(response => {
-        expect(response.status).to.eq(201);
+    return new Promise((resolve, reject) => {
+        cy.request({
+            method: 'POST',
+            url: '/api/auth/signup',
+            body: {
+                name: userData.name,
+                lastName: userData.lastName,
+                email: userData.email,
+                password: userData.password,
+                repeatPassword: userData.password
+            }
+        }).then(response => {
+            expect(response.status).to.eq(201);
+            resolve(userData); 
+        }, error => {
+            reject(error);
+        });
     });
 }
+
+
 export function loginUI(email, password) {
     homePage.signInButton();
     homePage.fillingSignInFormAPI(email, password);
