@@ -14,4 +14,6 @@ cypress/e2e/3-hillel-qa-auto-tests/lesson10_info.js
 cypress.json
 
 cypress/reports/
+mochawesome-report/
+reports/regression/
 
