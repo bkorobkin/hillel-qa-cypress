@@ -8,12 +8,20 @@ export function logAfterDelay(text, delay) {
 // Task 2: Fetch functions
 export function fetchTodo() {
     return fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(response => response.json());
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Error fetching todo:', error);
+            throw error; 
+        });
 }
 
 export function fetchUser() {
     return fetch('https://jsonplaceholder.typicode.com/users/1')
-        .then(response => response.json());
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Error fetching user:', error);
+            throw error; 
+        });
 }
 
 // Task 3: Fetch using async/await
