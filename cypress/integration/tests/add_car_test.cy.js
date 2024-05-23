@@ -1,7 +1,7 @@
 //Garage - Add car test
 import 'cypress-xpath';
 import {generalStep} from '../steps/GeneralStep';
-import {basePage} from '../../pages/BasePage';
+import {basePage} from '../pages/BasePage';
 
 describe('Garage - add car test', () => {  
           before(() => {

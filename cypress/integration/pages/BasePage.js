@@ -1,8 +1,8 @@
 //BasePage contains elements for logged user only
 import 'cypress-xpath';
-import { checkLoggedIn, checkRegistrationSuccess } from '../support/utilities.js';
-import { checkProfileData } from '../support/utilities.js';
-import { generateRandomData } from '../support/utilities.js';
+import { checkLoggedIn, checkRegistrationSuccess } from '../../support/utilities';
+import { checkProfileData } from '../../support/utilities';
+import { generateRandomData } from '../../support/utilities';
 export class BasePage {
 
 

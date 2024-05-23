@@ -1,6 +1,6 @@
 //utilities
 
-import { homePage } from "../pages/HomePage";
+import { homePage } from "../integration/pages/HomePage";
 
 //Sing up form data generator
 const names = ['Ethan', 'Sophie', 'Mason', 'Isabelle', 'Jacob', 'Emily', 'Daniel', 'Chloe', 'Alexander', 'Lily', 'Michael', 'Grace', 'Matthew', 'Zoe', 'David', 'Sophia', 'Joseph', 'Charlotte', 'Andrew', 'Mia'];

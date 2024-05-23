@@ -1,4 +1,4 @@
-import '../../support/commands'
+import '../../support/commands'  
 import { generateRandomData, createUserAndCheckStatus, loginUI } from '../../support/utilities';
 import { garageStep } from '../steps/GarageStep';
 
