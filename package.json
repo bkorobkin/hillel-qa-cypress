@@ -4,11 +4,12 @@
   "description": "cypress_course",
   "main": "index.js",
   "scripts": {
+    "test": "cypress run --browser chrome --spec 'cypress/integration/tests/first_test_original.cy.js' --config video=true --reporter mochawesome --reporter-options reportDir=reports/regression,html=false,overwrite=false,json=true",
     "cypress:open": "cypress open",
     "cy:run": "cypress run",
     "tests:chrome": "cypress run --browser chrome",
     "all:tests:run": "cypress run --browser chrome --spec 'cypress/integration/tests/**/*' -config video=true --reporter mochawesome --reporter-options reportDir=reports/regression,html=false,overwrite=false,json=true",
-    "merge:report": "npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "merge-reports": "npx mochawesome-merge 'reports/regression/*.json' > mochawesome.json && npx marge mochawesome.json",
     "merge:smoke:results": "npx mochawesome-merge \"reports/smoke/*.json\" > reports/smoke.json",
     "merge:regrassion:results": "npx mochawesome-merge \"reports/regression/*.json\" > reports/regrassion.json"
   },
@@ -26,6 +27,7 @@
     "cypress-xpath": "^2.0.1",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "start-server-and-test": "^2.0.3"
   }
 }
