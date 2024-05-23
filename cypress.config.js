@@ -6,7 +6,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 10000,
   watchForFileChanges: false,
     "e2e": {
-      specPattern: 'cypress/integration/tests/**/*.cy.{js}',
+      specPattern: 'cypress/integration/tests/*.cy.js',
       "setupNodeEvents": (on, config) => {
         
       },

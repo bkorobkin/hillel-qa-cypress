@@ -1,6 +1,6 @@
 // /// <reference types="cypress" />
 import 'cypress-xpath';
-import { generateRandomData } from '../../support/utilities';
+import { generateRandomData } from '../support/utilities.js';
 
 // //describition hw9 test logic
 // // Тест-кейс: Реєстрація нового користувач для сервісу "Гараж"

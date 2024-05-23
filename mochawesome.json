@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2024-05-23T10:43:59.282Z",
+    "end": "2024-05-23T10:44:16.615Z",
+    "duration": 17333
+  },
+  "results": [
+    {
+      "uuid": "388a71de-9d15-4534-b91a-81f8f53730e2",
+      "title": "",
+      "fullFile": "cypress\\integration\\tests\\first_test_original.cy.js",
+      "file": "cypress\\integration\\tests\\first_test_original.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a118e5d4-3b8a-4372-bcdd-d65e942032ca",
+          "title": "New-user registration. Сompilation SignUp form and data validation after registration.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "all-in",
+              "fullTitle": "New-user registration. Сompilation SignUp form and data validation after registration. all-in",
+              "timedOut": null,
+              "duration": 17279,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Відкрити вітальну сторінку.\ncy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/');\n// 2. Натиснути кнопку \"Sign Up\".\ncy.get('button').contains('Sign up').click();\n// 3. Заповнити форму реєстрації валідними даними.\nconst registrationData = generateRandomData();\ncy.get('input#signupName').should('exist').type(registrationData.name);\ncy.get('input#signupLastName').should('exist').type(registrationData.lastName);\ncy.get('input#signupEmail').should('exist').type(registrationData.email);\ncy.get('input#signupPassword').should('exist').type(registrationData.password);\ncy.get('input#signupRepeatPassword').should('exist').type(registrationData.password);\n// 4. Натиснути кнопку \"Registration\".\ncy.get('button').contains('Register').should('be.enabled').click();\n// 5. Переконатись, що реєстрація пройшла успішно і відкрилась сторінка \"Гараж\".\ncy.url().should('include', 'https://qauto2.forstudy.space/panel/garage');\ncy.contains('.alert.alert-success', 'Registration complete').should('be.visible');\n// 6. Перевірити, що дані на сторінці Profile відповідають даним, введеним під час реєстрації.\ncy.visit('https://guest:welcome2qauto@qauto2.forstudy.space/panel/profile');\ncy.get('.profile_name.display-4').should('contain', registrationData.name);\ncy.get('.profile_name.display-4').should('contain', registrationData.lastName);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: expected '<p.profile_name.display-4>' to contain 'Anderson'",
+                "estack": "AssertionError: Timed out retrying after 10000ms: expected '<p.profile_name.display-4>' to contain 'Anderson'\n    at Context.eval (webpack://hillel-qa-cypress/./cypress/integration/tests/first_test_original.cy.js:74:42)",
+                "diff": null
+              },
+              "uuid": "286041d0-56bd-4a84-819b-a9d6a6d896aa",
+              "parentUUID": "a118e5d4-3b8a-4372-bcdd-d65e942032ca",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "286041d0-56bd-4a84-819b-a9d6a6d896aa"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17279,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/regression",
+        "html": false,
+        "overwrite": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
